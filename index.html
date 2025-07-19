@@ -1,0 +1,85 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Cake</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cake">
+  <div class="candleSet">
+    <div class="flame"></div>
+    <div class="candle"></div>
+  </div>
+  <div class="cakeBody">
+    <div class="layer top"></div>
+    <div class="layer middle"></div>
+    <div class="layer bottom"></div>
+  </div>
+</div>
+  <h1>Happy Birthday!</h1>
+  <p>RivaL</p>
+<h2 id="wishText"></h2>
+<p id="afterWish" style="opacity: 0;">Semoga harapanmu terkabul 🎉</p>
+<audio id="bgm" src="Happy-birthday.mp3" autoplay loop></audio>
+<button onclick="toggleMusic()">💜</button>
+<script>
+  const flame = document.querySelector('.flame');
+  const wishText = document.getElementById('wishText');
+  const afterWish = document.getElementById('afterWish');
+
+const bgm = document.getElementById("bgm");
+
+  function toggleMusic() {
+    if (bgm.paused) {
+      bgm.play();
+    } else {
+      bgm.pause();
+    }
+  }
+
+  // auto play on load
+  window.addEventListener("load", () => {
+    bgm.volume = 0.3;
+    bgm.play().catch(() => {
+      console.log("Autoplay diblokir, perlu interaksi.");
+    });
+  });
+
+  const message = "Make a wish...";
+  let index = 0;
+
+  flame.addEventListener('click', () => {
+    flame.style.transition = 'opacity 0.5s ease';
+    flame.style.opacity = '0';
+
+    setTimeout(() => {
+      flame.style.display = 'none';
+      typeText();
+    }, 500);
+  });
+
+  function typeText() {
+    if (index < message.length) {
+      wishText.textContent += message.charAt(index);
+      index++;
+      setTimeout(typeText, 100); 
+    } else {
+      wishText.style.animation = "blink 1s infinite";
+
+      // Munculkan afterWish setelah 1.5 detik
+      setTimeout(() => {
+  wishText.style.transition = "opacity 1s ease";
+  wishText.style.opacity = 0;
+
+  setTimeout(() => {
+    wishText.style.display = "none";
+    afterWish.style.opacity = 1;
+  }, 1000); 
+}, 10000);
+    }
+  }
+</script>
+</body>
+</html>

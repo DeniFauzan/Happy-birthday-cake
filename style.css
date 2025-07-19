@@ -1,0 +1,146 @@
+body {
+  background: #222;
+  color: #ffcccb;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.layer {
+  height: 40px;
+  border-radius: 5px;
+  margin: 5px auto;
+  position: relative;
+}
+
+.cake {
+  position: relative;
+  margin: 0 auto;
+  animation-delay: 0.5s;
+}
+
+.cakeBody {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.candleSet {
+  position: absolute;
+  top: -40px; /* atur sesuai tinggi kuemu */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.candle {
+  width: 10px;
+  height: 40px;
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 10px yellow;
+  animation: flicker 0.3s infinite alternate;
+  z-index: 11;
+}
+
+.layer.top {
+  width: 80px;
+  background: linear-gradient(to bottom, #d8b4fe, #c084fc); /* ungu muda */
+}
+
+.layer.middle {
+  width: 120px;
+  background: linear-gradient(to bottom, #a855f7, #9333ea); /* ungu medium */
+}
+
+.layer.bottom {
+  width: 160px;
+  background: linear-gradient(to bottom, #6b21a8, #581c87); /* ungu tua */
+}
+
+.layer::after {
+ / content: "";
+  display: block;
+  width: 100%;
+  height: 10px;
+  background: #fef3c7; /* warna krim */
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 5px 5px;/
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cake {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 2em;
+}
+
+p {
+  font-size: 2.2em;
+  color: #ff9e9e;
+}
+
+#wishText {
+  font-size: 1.5em;
+  color: #ffe4fa;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+@keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+#wishText {
+  font-size: 1.5em;
+  color: #ffe4fa;
+  margin-top: 20px;
+  opacity: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid transparent;
+  display: inline-block;
+}
+
+#afterWish {
+  font-size: 1.2em;
+  color: #ffd6f8;
+  margin-top: 10px;
+  transition: opacity 1s ease;
+}
